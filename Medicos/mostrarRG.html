@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registros</title>
+  <link rel="stylesheet" type="text/css" href="estilosRG.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Registros</h2>
+    <table id="registrosTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>RFC</th>
+          <th>Nombre completo</th>
+          <th>Cédula profesional</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody id="registrosBody">
+        <!-- Los registros se agregarán dinámicamente aquí -->
+        <tr>
+          <td>1</td>
+          <td>RFCA123</td>
+          <td>Daniel Galvan</td>
+          <td>1234567890</td>
+          <td>Danny22@gmail.com</td>
+          <td>medicoadmin</td>
+          <td><button id="Eliminar", onclick="eliminarRegistro(1)">Eliminar</button></td>
+          <td><button id="Actualizar", onclick="actualizarRegistro(1)">Actualizar</button></td>
+        
+        </tr>
+        <!-- Puedes agregar más registros aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Scripts -->
+  
+</body>
+</html>

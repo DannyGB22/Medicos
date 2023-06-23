@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Expediente de Pacientes</title>
+  <link rel="stylesheet" type="text/css" href="estilosEXP.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Expediente de Pacientes</h2>
+    <form id="expedienteForm">
+      <label for="medico">Médico que atiende:</label>
+      <input type="text" id="medico" name="medico" required>
+
+      <label for="nombre">Nombre completo del paciente:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="fecha">Fecha de nacimiento:</label>
+      <input type="date" id="fecha" name="fecha" required>
+
+      <label for="enfermedades">Enfermedades crónicas:</label>
+      <textarea id="enfermedades" name="enfermedades" rows="4"></textarea>
+
+      <label for="alergias">Alergias:</label>
+      <textarea id="alergias" name="alergias" rows="4"></textarea>
+
+      <label for="antecedentes">Antecedentes familiares:</label>
+      <textarea id="antecedentes" name="antecedentes" rows="4"></textarea>
+
+      <input type="submit" value="Guardar">
+    </form>
+  </div>
+
+
+</body>
+</html>

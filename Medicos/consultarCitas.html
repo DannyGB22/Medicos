@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Consultar Citas</title>
+  <link rel="stylesheet" type="text/css" href="estilosCSCitas.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Consultar Citas</h2>
+    <form id="filtroForm">
+      <label for="nombre">Filtrar por Nombre:</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del paciente">
+
+      <label for="fecha">Filtrar por Fecha:</label>
+      <input type="date" id="fecha" name="fecha">
+
+      <input type="submit" value="Filtrar">
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Paciente</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Datos de citas consultadas -->
+        <tr>
+          <td>1</td>
+          <td>2023-05-28</td>
+          <td>Daniel Galvan</td>
+          <td>
+            <button class="ver-receta">Ver Receta</button>
+            <button class="reimprimir-receta">Reimprimir Receta</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+</body>
+</html>

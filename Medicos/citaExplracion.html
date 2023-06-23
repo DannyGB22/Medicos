@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cita Exploración y Diagnóstico</title>
+  <link rel="stylesheet" type="text/css" href="estilosCita.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Cita Exploración y Diagnóstico</h2>
+    <div class="exploracion">
+      <h3>Exploración</h3>
+      <form id="exploracionForm">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" required>
+
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" name="altura" required>
+
+        <label for="temperatura">Temperatura (°C):</label>
+        <input type="number" id="temperatura" name="temperatura" required>
+
+        <label for="latidos">Latidos por minuto:</label>
+        <input type="number" id="latidos" name="latidos" required>
+
+        <label for="saturacion">Saturación de oxígeno:</label>
+        <input type="number" id="saturacion" name="saturacion" required>
+
+        <label for="glucosa">Glucosa:</label>
+        <input type="number" id="glucosa" name="glucosa" required>
+
+        <label for="paciente">Paciente:</label>
+        <select id="paciente" name="paciente" required>
+          <!-- Opciones de pacientes registrados -->
+        </select>
+      </form>
+    </div>
+
+    <div class="diagnostico">
+      <h3>Diagnóstico</h3>
+      <form id="diagnosticoForm">
+        <label for="sintomas">Síntomas:</label>
+        <textarea id="sintomas" name="sintomas" rows="4" required></textarea>
+
+        <label for="diagnostico">Diagnóstico:</label>
+        <textarea id="diagnostico" name="diagnostico" rows="4" required></textarea>
+
+        <label for="tratamiento">Tratamiento:</label>
+        <textarea id="tratamiento" name="tratamiento" rows="4" required></textarea>
+
+        <label for="estudios">Solicitud de Estudios:</label>
+        <textarea id="estudios" name="estudios" rows="4"></textarea>
+      </form>
+    </div>
+
+
+    <div style="clear:both;"></div>
+
+    <input type="submit" value="Guardar">
+    <input type="submit" value="Descargar Receta">
+  </div>
+
+
+</body>
+</html>
