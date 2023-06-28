@@ -48,7 +48,7 @@ body {
     resize: vertical;
   }
   
-  .container input[type="submit"] {
+  .container button[type="submit"] {
     width: 100%;
     padding: 10px;
     border: none;

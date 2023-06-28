@@ -4,12 +4,12 @@
     <head>
       <meta charset="UTF-8">
       <title>ConsultorioMedicos</title>
-      <link rel="stylesheet" type="text/css" href="estilos.css">
+      <link rel="stylesheet" type="text/css" href="../static/estilos.css">
     </head>
     <body>
       <div class="container">
         <h2>Bienvenido</h2>
-        <form>
+        <form action="{{url_for ('login')}}" method="POST">
           <label for="rfc">RFC del Médico:</label>
           <input type="text" id="rfc" name="rfc" required>
     
