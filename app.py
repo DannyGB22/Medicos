@@ -81,6 +81,9 @@ def administracionMedicos():
 
     return render_template('administracionMedicos.html')
 
+
+
+
 @app.route('/registroEXP', methods=['POST', 'GET'])
 def registroEXP():
     if request.method == 'POST':
@@ -119,8 +122,12 @@ def consultarCitas():
 def mostrarRG():
     return render_template('mostrarRG.html')
 
+@app.route('/consultarPacientes')
+def consultarPC():
+    return render_template('consultarPC.html')
+
 # ...
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
 
