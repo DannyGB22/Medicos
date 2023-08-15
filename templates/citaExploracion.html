@@ -11,8 +11,9 @@
     <div class="exploracion">
       <h3>Exploración</h3>
       <form id="exploracionForm" method="post">
+        
         <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required>
+        <input type="text" id="fecha" name="fecha" required>
 
         <label for="peso">Peso (kg):</label>
         <input type="number" id="peso" name="peso" required>
@@ -33,10 +34,11 @@
         <input type="number" id="glucosa" name="glucosa" required>
 
         <label for="paciente">Paciente:</label>
-        <select id="paciente" name="paciente" required>
-          {% for paciente in pacientes %}
-            <option value="{{ paciente.ID }}">{{ paciente.NombreCompleto }}</option>
-          {% endfor %}
+        <select type="number" id= "paciente" name="paciente" required>
+
+        <label for="doctor">Doctor:</label>
+        <select type="number" id="doctor" name="doctor" required>
+
         </select>
       </form>
     </div>
