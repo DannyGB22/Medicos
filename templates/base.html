@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Aplicación</title>
+  <link rel="stylesheet" type="text/css" href="../static/estilosMenu.css">
+</head>
+<body>
+    {% include "menu.html" %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

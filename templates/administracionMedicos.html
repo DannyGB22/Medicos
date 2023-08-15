@@ -1,15 +1,19 @@
-
-{% block body %}
+{% extends "base.html" %}
+{% block content %}
 
 <link rel="stylesheet" type="text/css" href="../static/estilosADM.css">
-
 
 <div class="container">
     <h2>Nuevo médico</h2>
 
     <div class="form-container">
+<<<<<<< Updated upstream
         <h2>Nuevo registro</h2>
         <form action="/administracionMedicos" method="post">
+=======
+        <h2>Nuevo registros</h2>
+        <form action="/Actualizar" method="post">
+>>>>>>> Stashed changes
             <label for="rfc">RFC:</label>
             <input type="text" id="rfc" name="rfc" required>
 
@@ -35,5 +39,5 @@
         </form>
     </div>
 </div>
-{% endblock %}
 
+{% endblock %}

@@ -1,40 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Registros</title>
-  <link rel="stylesheet" type="text/css" href="../static/estilosRG.css">
-</head>
-<body>
-  <div class="container">
-      <h2>Registros</h2>
-      <table id="registrosTable">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>RFC</th>
-                  <th>Nombre completo</th>
-                  <th>Cédula profesional</th>
-                  <th>Correo</th>
-                  <th>Rol</th>
-                  <th>Eliminar</th>
-                  <th>Actualizar</th>
-              </tr>
-          </thead>
-          <tbody id="registrosBody">
-              {% for registro in registros %}
-              <tr>
-                  <td>{{ registro.id }}</td>
-                  <td>{{ registro.rfc }}</td>
-                  <td>{{ registro.nombre }}</td>
-                  <td>{{ registro.cedula_profesional }}</td>
-                  <td>{{ registro.correo }}</td>
-                  <td>{{ registro.rol }}</td>
-                  
-              </tr>
-              {% endfor %}
-          </tbody>
-      </table>
-  </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/estilosRG.css">
+
+<div class="container">
+    <h2>Registros</h2>
+    <table id="registrosTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RFC</th>
+                <th>Nombre completo</th>
+                <th>Cédula profesional</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Eliminar</th>
+                <th>Actualizar</th>
+            </tr>
+        </thead>
+        <tbody id="registrosBody">
+            {% for registro in registros %}
+            <tr>
+                <td>{{ registro.id }}</td>
+                <td>{{ registro.rfc }}</td>
+                <td>{{ registro.nombre }}</td>
+                <td>{{ registro.cedula_profesional }}</td>
+                <td>{{ registro.correo }}</td>
+                <td>{{ registro.rol }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

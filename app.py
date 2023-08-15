@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config['MYSQL_HOST'] = "localhost"
 app.config['MYSQL_USER'] = "root"
-app.config['MYSQL_PASSWORD'] = "danny22"
+app.config['MYSQL_PASSWORD'] = ""
 app.config['MYSQL_DB'] = "bdmedicos"
 app.secret_key = 'mysecretkey'
 
@@ -149,6 +149,10 @@ def buscar():
     return render_template('Buscar.html', user=user)
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 @app.route('/actualizar', methods=['POST'])
 def actualizar_registro():
     cursor = get_cursor()

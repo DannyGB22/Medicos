@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Consultar Pacientes</title>
-  <link rel="stylesheet" type="text/css" href="../static/estilosConsultar.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/estilosConsultar.css">
+
+
   <div class="container">
     <h2>Consultar Pacientes</h2>
     <table>
@@ -40,6 +38,5 @@
     </table>
   </div>
 
-  
-</body>
-</html>
+{% endblock %}
+

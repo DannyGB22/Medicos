@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Actualizar</title>
-  <link rel="stylesheet" type="text/css" href="../static/estilosADM.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/estilosADM.css">
+
+
   <div class="container">
     <h2>Actualizar registros</h2>
     <form action="/actualizar" method="post">
@@ -32,7 +30,6 @@
   
       <input type="submit" value="Actualizar">
   </form>
-  
-  </div>
-</body>
-</html>
+
+
+{% endblock %}

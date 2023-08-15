@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -37,19 +38,29 @@ body {
   
   li {
     margin-bottom: 15px;
+=======
+.container {
+  background-color: #333;
+  padding: 10px 20px;
+}
+>>>>>>> Stashed changes
 
-  }
-  
-  a {
-    display: block;
-    padding: 10px;
-    background-color: #098f7d;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  
-  a:hover {
-    background-color: #2980b9;
-  }
-  
+.container h1 {
+  margin: 0;
+  color: white;
+}
+
+.btn {
+  color: white;
+  background-color: #555;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: block;  /* Asegúrate de que los botones se muestren en bloques, uno debajo del otro */
+  margin-bottom: 10px;  /* Espacio entre botones */
+}
+
+.btn:hover {
+  background-color: #777;
+}
