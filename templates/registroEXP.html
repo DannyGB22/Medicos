@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Registro Paciente</title>
+
+{% extends "base.html" %}
+{% block content %}
+
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../static/estilosEXP.css">
-</head>
-<body>
+
   <div class="container">
     <h2>Registro de Pacientes</h2>
 
@@ -65,5 +63,6 @@
 {% endwith %}
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.all.min.js"></script>
-</body>
-</html>
+
+
+{% endblock %}

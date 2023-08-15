@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for,flash, sess
 from flask_mysqldb import MySQL
 from functools import wraps
 from flask_bcrypt import Bcrypt
-from werkzeug.utils import secure_filename
 
 
 
@@ -10,7 +9,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config['MYSQL_HOST'] = "localhost"
 app.config['MYSQL_USER'] = "root"
-app.config['MYSQL_PASSWORD'] = ""
+app.config['MYSQL_PASSWORD'] = "danny"
 app.config['MYSQL_DB'] = "bdmedicos"
 app.secret_key = 'mysecretkey'
 
@@ -30,13 +29,17 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         
-        if 'rfcu' not in session:
+        if 'RFC' not in session:
             # Redirigir al inicio de sesión si no ha iniciado sesión
             flash('Debe iniciar sesión para acceder a esta página.')
             return redirect(url_for('index'))
         return f(*args, **kwargs)
     return decorated_function
     
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -47,8 +50,6 @@ def login():
     cursor.execute(query, (rfc, password))
     resultado = cursor.fetchone()
     if resultado is not None:
-        
-        session['rfcu'] = rfc
         return redirect(url_for('menu'))
     else:
         flash('RFC o contraseña incorrectos')
@@ -56,14 +57,8 @@ def login():
 
 
 
-@app.route('/menu')
-@login_required
-def menu():
-    return render_template('menu.html')
-
-
 @app.route('/administracionMedicos', methods=['POST', 'GET'])
-@login_required
+# @login_required
 def administracionMedicos():
     if request.method == 'POST':
         rfc = request.form.get('rfc')
@@ -71,8 +66,6 @@ def administracionMedicos():
         cedula = request.form.get('cedula')
         correo = request.form.get('correo')
         password = request.form.get('password')
-        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')  # Encriptar contraseña
-
         rol = request.form.get('rol')
 
         if not all([rfc, nombre, cedula, correo, password, rol]):
@@ -87,9 +80,9 @@ def administracionMedicos():
         cursor = get_cursor()
         query = 'INSERT INTO usuarios (RFC, NombreCompleto, CedulaProfesional, correo, password, rol) ' \
                 'VALUES (%s, %s, %s, %s, %s, %s)'
-        cursor.execute(query, (rfc, nombre, cedula, correo, hashed_password, rol))
+        cursor.execute(query, (rfc, nombre, cedula, correo, password, rol))
         mysql.connection.commit()
-        session['rfcu'] = rfc
+
         return redirect(url_for('menu'))
 
     return render_template('administracionMedicos.html')
@@ -97,7 +90,6 @@ def administracionMedicos():
 
 
 @app.route('/register')
-@login_required
 def register():
     return render_template('registroEXP.html')
 
@@ -118,8 +110,8 @@ def registroEXP():
         CS.execute('INSERT INTO pacientes(MedicoAtendedor, NombreCompleto, FechaNacimiento, EnfermedadesCronicas, Alergias, AntecedentesFamiliares) VALUES (%s, %s, %s, %s, %s,%s)', (vmedico, vnombre,vfecha,venfermedades, valergias, vantecedentes))
         
         mysql.connection.commit()
-        flash('Paciente registrado exitosamente!')    
-        return redirect(url_for('register'))
+        flash('Registro exitosamente!')    
+        return redirect(url_for('registroEXP'))
     
         
 
@@ -133,15 +125,14 @@ def buscar():
         rfc = request.form.get('rfc')
         
         # Buscar en la base de datos usando una consulta SQL SELECT
-        query = 'SELECT NombreCompleto,correo FROM usuarios WHERE RFC = %s'
+        query = 'SELECT NombreCompleto FROM usuarios WHERE RFC = %s'
         cursor.execute(query, (rfc,))
         result = cursor.fetchone()
 
         if result:
             user = {
                 "RFC": rfc,
-                "NombreCompleto": result[0],  # Obteniendo el primer elemento ya que solo estamos solicitando un campo
-                "correo": result[0],
+                "NombreCompleto": result[0]  # Obteniendo el primer elemento ya que solo estamos solicitando un campo
             }
         else:
             flash('Usuario no encontrado!')
@@ -149,10 +140,7 @@ def buscar():
     return render_template('Buscar.html', user=user)
 
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 @app.route('/actualizar', methods=['POST'])
 def actualizar_registro():
     cursor = get_cursor()
@@ -195,9 +183,8 @@ def citaExploracion():
         latidos = request.form['latidos']
         saturacion = request.form['saturacion']
         glucosa = request.form['glucosa']
-        paciente_id = request.form['paciente']
-        doctor_id = request.form['doctor']
-
+        paciente_id = request.form['paciente']  # Obtener el ID del paciente seleccionado desde el formulario
+        
         # Obtener los datos del formulario de diagnóstico
         sintomas = request.form['sintomas']
         diagnostico = request.form['diagnostico']
@@ -205,8 +192,8 @@ def citaExploracion():
         
         # Insertar la cita en la base de datos
         cursor = get_cursor()
-        query = 'INSERT INTO citas (ID_Paciente, ID_Medico Fecha, Peso, Altura, Temperatura, LatidosPorMinuto, SaturacionOxigeno, Glucosa, Sintomas, Diagnostico, Tratamiento) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-        cursor.execute(query, (paciente_id, doctor_id, fecha, peso, altura, temperatura, latidos, saturacion, glucosa, sintomas, diagnostico, tratamiento))
+        query = 'INSERT INTO citas (ID_Paciente, Fecha, Peso, Altura, Temperatura, LatidosPorMinuto, SaturacionOxigeno, Glucosa, Sintomas, Diagnostico, Tratamiento) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+        cursor.execute(query, (paciente_id, fecha, peso, altura, temperatura, latidos, saturacion, glucosa, sintomas, diagnostico, tratamiento))
         mysql.connection.commit()
         
         # Redireccionar a la página de consulta de citas después de guardar los datos
@@ -224,28 +211,36 @@ def citaExploracion():
 
 
 
+
 @app.route('/consultarCitas', methods=['GET', 'POST'])
 def consultarCitas():
     if request.method == 'POST':
+        RFC = request.form.get('RFC')
+        
         # Obtener los valores de los filtros de nombre y fecha
         nombre = request.form.get('nombre')
         fecha = request.form.get('fecha')
+        
+        # Verificar si rfc es None y asignar cadena vacía en su lugar
+        if RFC is None:
+            RFC = ''
 
         # Realizar una consulta en la base de datos para obtener las citas del médico
         cursor = get_cursor()
-        query = 'SELECT * FROM citas WHERE NombreCompleto LIKE %s AND Fecha = %s'
-        cursor.execute(query, ('%' + nombre + '%', fecha))
+        query = 'SELECT * FROM citas WHERE RFC LIKE %s AND Fecha = %s'
+        cursor.execute(query, ('%' + RFC + '%', fecha))
+
+
 
         citas = cursor.fetchall()
-
+        
         if citas:
             return render_template('consultarCitas.html', citas=citas)
         else:
             flash('No se encontraron citas para este médico.')
             return redirect(url_for('consultarCitas'))
-
+    
     return render_template('consultarCitas.html')
-
 
 
 
@@ -266,12 +261,8 @@ def consultarPC():
     return render_template('consultarPC.html', pacientes=pacientes)
 
 
-@app.route('/cerrar')
-def logout():
-    session.pop('rfcu', None)
-    # Redirigir al usuario a la página de inicio de sesión
-    return redirect(url_for('index'))
+# ...
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
 

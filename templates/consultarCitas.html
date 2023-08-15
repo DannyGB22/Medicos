@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Consultar Citas</title>
+
+{% extends "base.html" %}
+{% block content %}
+
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilosCSCitas.css') }}">
-</head>
-<body>
+
   <div class="container">
     <h2>Consultar Citas</h2>
     
@@ -48,3 +46,5 @@
   </div>
 </body>
 </html>
+
+{% endblock %}
