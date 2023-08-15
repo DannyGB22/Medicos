@@ -2,21 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Expediente de Pacientes</title>
+  <title>Registro Paciente</title>
   <link rel="stylesheet" type="text/css" href="../static/estilosEXP.css">
 </head>
 <body>
   <div class="container">
-    <h2>Expediente de Pacientes</h2>
-    <form id="expedienteForm">
+    <h2>Registro de Pacientes</h2>
+
+    <!-- {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %} -->
+
+    <form method="POST" action="{{ url_for('registroEXP') }}">
       <label for="medico">Médico que atiende:</label>
-      <input type="text" id="medico" name="medicoAtiende" required>
+      <input type="text" id="medicoAtiende" name="medicoAtiende" required>
 
       <label for="nombre">Nombre completo del paciente:</label>
-      <input type="text" id="nombre" name="nombrePaciente" required>
+      <input type="text" id="nombrePaciente" name="nombrePaciente" required>
 
       <label for="fecha">Fecha de nacimiento:</label>
-      <input type="date" id="fecha" name="fechanacimiento" required>
+      <input type="date" id="fechanacimiento" name="fechanacimiento" required>
 
       <label for="enfermedades">Enfermedades crónicas:</label>
       <textarea id="enfermedades" name="enfermedades" rows="4"></textarea>
@@ -30,7 +41,5 @@
       <button type="submit">Guardar</button>
     </form>
   </div>
-
-
 </body>
 </html>

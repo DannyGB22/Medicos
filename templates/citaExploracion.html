@@ -10,7 +10,7 @@
     <h2>Cita Exploración y Diagnóstico</h2>
     <div class="exploracion">
       <h3>Exploración</h3>
-      <form id="exploracionForm">
+      <form id="exploracionForm" method="post">
         <label for="fecha">Fecha:</label>
         <input type="date" id="fecha" name="fecha" required>
 
@@ -34,35 +34,31 @@
 
         <label for="paciente">Paciente:</label>
         <select id="paciente" name="paciente" required>
-          <!-- Opciones de pacientes registrados -->
+          {% for paciente in pacientes %}
+            <option value="{{ paciente.ID }}">{{ paciente.NombreCompleto }}</option>
+          {% endfor %}
         </select>
       </form>
     </div>
 
     <div class="diagnostico">
       <h3>Diagnóstico</h3>
-      <form id="diagnosticoForm">
+      <form id="diagnosticoForm" method="post">
         <label for="sintomas">Síntomas:</label>
-        <textarea id="sintomas" name="sintomas" rows="4" required></textarea>
+        <textarea id="sintomas" name="sintomas" required></textarea>
 
         <label for="diagnostico">Diagnóstico:</label>
-        <textarea id="diagnostico" name="diagnostico" rows="4" required></textarea>
+        <textarea id="diagnostico" name="diagnostico" required></textarea>
 
         <label for="tratamiento">Tratamiento:</label>
-        <textarea id="tratamiento" name="tratamiento" rows="4" required></textarea>
+        <textarea id="tratamiento" name="tratamiento" required></textarea>
 
-        <label for="estudios">Solicitud de Estudios:</label>
-        <textarea id="estudios" name="estudios" rows="4"></textarea>
+        <!-- Agrega los campos adicionales de diagnóstico aquí -->
+
+        <button type="submit">Guardar</button>
+        <input type="submit" value="Descargar Receta">
       </form>
     </div>
-
-
-    <div style="clear:both;"></div>
-
-    <input type="submit" value="Guardar">
-    <input type="submit" value="Descargar Receta">
   </div>
-
-
 </body>
 </html>

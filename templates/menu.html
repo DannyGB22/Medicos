@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +8,14 @@
   <link rel="stylesheet" type="text/css" href="../static/estilosMenu.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Menú Principal</h2>
 
-    <a href="{{url_for('administracionMedicos')}}" class="btn">Administración Médicos</a>
+  <div class="container">
+    
+    <h1>Menú Principal</h1>
+
+    <a href="{{url_for('consultarPC')}}" class="btn">Consultar Pacientes</a>
     <br>
-    <a href="{{url_for('registroEXP')}}" class="btn">Registro Expedientes</a>
-    <br>
-    <a href="{{url_for('Actualizar')}}" class="btn">Actualizar Medicos</a>
+    <a href="{{url_for('register')}}" class="btn">Registro Paciente</a>
     <br>
     <a href="{{url_for('citaExploracion')}}" class="btn">Citas de Exploracion</a>
     <br>
@@ -21,8 +23,11 @@
     <br>
     <a href="{{url_for('mostrarRG')}}" class="btn">Consultar Medicos</a>
     <br>
-    <a href="{{url_for('consultarPC')}}" class="btn">Consultar Pacientes</a>
- 
+    <a href="{{url_for('buscar')}}" class="btn">Actualizar Medicos</a>
+    <br>
+    <a href="{{url_for('administracionMedicos')}}" class="btn">Administración Médicos</a>
+    <br>
+
   </div>
 
 </body>
