@@ -7,10 +7,10 @@ from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-app.config['MYSQL_HOST'] = "localhost"
+app.config['MYSQL_HOST'] = "127.0.0.1"
 app.config['MYSQL_USER'] = "root"
-app.config['MYSQL_PASSWORD'] = "danny"
-app.config['MYSQL_DB'] = "bdmedicos"
+app.config['MYSQL_PASSWORD'] = ""
+app.config['MYSQL_DB'] = "BaseMedicos"
 app.secret_key = 'mysecretkey'
 
 mysql = MySQL(app)
@@ -253,7 +253,7 @@ def mostrarRG():
 def consultarPC():
     # Realizar una consulta en la base de datos para obtener los datos de los pacientes
     cursor = get_cursor()
-    query = 'SELECT * FROM pacientes'
+    query = 'SELECT * FROM Pacientes'
     cursor.execute(query)
     pacientes = cursor.fetchall()
 
@@ -261,8 +261,9 @@ def consultarPC():
     return render_template('consultarPC.html', pacientes=pacientes)
 
 
+
 # ...
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=3306, debug=True)
 

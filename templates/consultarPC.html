@@ -4,39 +4,31 @@
 <link rel="stylesheet" type="text/css" href="../static/estilosConsultar.css">
 
 
-  <div class="container">
-    <h2>Consultar Pacientes</h2>
-    <table>
-      <thead>
-        <tr>
+<table border="1">
+  <thead>
+      <tr>
           <th>ID</th>
-          <th>Medico que atiende</th>
-          <th>Nombre del paciente</th>
+          <th>Nombre Completo</th>
           <th>Fecha de Nacimiento</th>
           <th>Enfermedades Crónicas</th>
           <th>Alergias</th>
           <th>Antecedentes Familiares</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Datos de pacientes consultados -->
-        <tr>
-          <td>1</td>
-          <td>Ferrer Carlos</td>
-          <td>Andres Morales</td>
-          <td>1990-05-15</td>
-          <td>Asma</td>
-          <td>Pollen</td>
-          <td>Heart Disease</td>
-          <td>
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      </tr>
+  </thead>
+  <tbody>
+      {% for paciente in pacientes %}
+      <tr>
+          <td>{{ paciente.ID }}</td>
+          <td>{{ paciente.NombreCompleto }}</td>
+          <td>{{ paciente.FechaNacimiento }}</td>
+          <td>{{ paciente.EnfermedadesCronicas }}</td>
+          <td>{{ paciente.Alergias }}</td>
+          <td>{{ paciente.AntecedentesFamiliares }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
 
 {% endblock %}
 
